@@ -15,7 +15,6 @@ class ReportGeneratorImpTest {
     @BeforeEach
     void setUp() {
         storageService = new StorageServiceImp();
-        storageService.clear();
         reportGenerator = new ReportGeneratorImp(storageService);
     }
 

@@ -6,11 +6,18 @@ import core.basesyntax.models.FruitTransaction;
 import core.basesyntax.services.StorageService;
 import core.basesyntax.services.StorageServiceImp;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class BalanceOperationTest {
-    private final StorageService storageService = new StorageServiceImp();
-    private final BalanceOperation balanceOperation = new BalanceOperation(storageService);
+    private static StorageService storageService;
+    private static BalanceOperation balanceOperation;
+
+    @BeforeAll
+    static void setUp() {
+        storageService = new StorageServiceImp();
+        balanceOperation = new BalanceOperation(storageService);
+    }
 
     @AfterEach
     void tearDown() {

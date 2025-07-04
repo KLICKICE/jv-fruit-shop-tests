@@ -25,8 +25,7 @@ class StorageServiceImpTest {
     @Test
     void addZeroQuantity_doesNotCreateEntry() {
         storageService.add("banana", TYPICAL_QUANTITY_ZERO);
-        int quantity = storageService.getQuantity("banana");
-        assertEquals(TYPICAL_QUANTITY_ZERO, quantity);
+        assertFalse(storageService.getAll().containsKey("banana"));
     }
 
     @Test

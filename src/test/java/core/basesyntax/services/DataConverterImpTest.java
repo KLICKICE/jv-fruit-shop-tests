@@ -1,5 +1,23 @@
 package core.basesyntax.services;
 
+import static core.basesyntax.services.TestConstants.CORRECT_LINE_BALANCE;
+import static core.basesyntax.services.TestConstants.CORRECT_LINE_PURCHASE;
+import static core.basesyntax.services.TestConstants.CORRECT_LINE_RETURN;
+import static core.basesyntax.services.TestConstants.CORRECT_LINE_SUPPLY;
+import static core.basesyntax.services.TestConstants.FRUIT_APPLE;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_EMPTY_STRING;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_EXTRA_ELEMENT;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_LETTERS_INSTEAD_OF_NUMBER;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_MISSING_OPERATION;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_MISSING_QUANTITY;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_NEGATIVE_NUMBER;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_NULL_ENTRY;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_UNKNOWN_OPERATION;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_WRONG_SEPARATOR;
+import static core.basesyntax.services.TestConstants.INCORRECT_LINE_ZERO_NUMBER;
+import static core.basesyntax.services.TestConstants.ONE_ELEMENT;
+import static core.basesyntax.services.TestConstants.TYPICAL_QUANTITY_TEN;
+import static core.basesyntax.services.TestConstants.ZERO_POSITION;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -12,27 +30,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class DataConverterImpTest {
-    private static final int ONE_ELEMENT = 1;
-    private static final int ZERO_POSITION = 0;
-    private static final int TYPICAL_QUANTITY_TEN = 10;
-    private static final String FRUIT_APPLE = "apple";
-
-    private static final String CORRECT_LINE_BALANCE = "b,apple,10";
-    private static final String CORRECT_LINE_RETURN = "r,apple,10";
-    private static final String CORRECT_LINE_PURCHASE = "p,apple,10";
-    private static final String CORRECT_LINE_SUPPLY = "s,apple,10";
-
-    private static final String INCORRECT_LINE_LETTERS_INSTEAD_OF_NUMBER = "b,apple,ten";
-    private static final String INCORRECT_LINE_ZERO_NUMBER = "b,apple,0";
-    private static final String INCORRECT_LINE_NEGATIVE_NUMBER = "b,apple,-10";
-    private static final String INCORRECT_LINE_MISSING_QUANTITY = "b,apple";
-    private static final String INCORRECT_LINE_MISSING_OPERATION = "apple,10";
-    private static final String INCORRECT_LINE_UNKNOWN_OPERATION = "x,apple,10";
-    private static final String INCORRECT_LINE_WRONG_SEPARATOR = "b;apple;10";
-    private static final String INCORRECT_LINE_EXTRA_ELEMENT = "b,apple,10,extra";
-    private static final String INCORRECT_LINE_NULL_ENTRY = null;
-    private static final String INCORRECT_LINE_EMPTY_STRING = "";
-
     private DataConverter dataConverter;
     private List<String> list;
 
