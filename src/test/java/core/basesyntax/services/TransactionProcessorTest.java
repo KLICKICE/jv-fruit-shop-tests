@@ -15,6 +15,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TransactionProcessorTest {
+
+    private static final int EXPECTED_QUANTITY = 140;
+    private static final int HUNDRED = 100;
+    private static final int FIFTY = 50;
+    private static final int THIRTY = 30;
+    private static final int TWENTY = 20;
+    private static final String APPLE = "apple";
+
     private StorageService storageService;
     private TransactionProcessor processor;
 
@@ -41,17 +49,15 @@ class TransactionProcessorTest {
     @Test
     void processTransactions_validTransaction_shouldUpdateStorage() {
         List<FruitTransaction> transactions = List.of(
-                new FruitTransaction(FruitTransaction.Operation.BALANCE, "apple", 100),
-                new FruitTransaction(FruitTransaction.Operation.SUPPLY, "apple", 50),
-                new FruitTransaction(FruitTransaction.Operation.PURCHASE, "apple", 30),
-                new FruitTransaction(FruitTransaction.Operation.RETURN, "apple", 20)
+                new FruitTransaction(FruitTransaction.Operation.BALANCE, APPLE, HUNDRED),
+                new FruitTransaction(FruitTransaction.Operation.SUPPLY, APPLE, FIFTY),
+                new FruitTransaction(FruitTransaction.Operation.PURCHASE, APPLE, THIRTY),
+                new FruitTransaction(FruitTransaction.Operation.RETURN, APPLE, TWENTY)
         );
 
         processor.processTransactions(transactions);
+        int actualQuantity = storageService.getQuantity(APPLE);
 
-        int expectedQuantity = 100 + 50 - 30 + 20;
-        int actualQuantity = storageService.getQuantity("apple");
-
-        assertEquals(expectedQuantity, actualQuantity);
+        assertEquals(EXPECTED_QUANTITY, actualQuantity);
     }
 }

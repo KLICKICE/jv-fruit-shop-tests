@@ -9,6 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class PurchaseOperationTest {
+    private static final int TWENTY = 20;
+    private static final int TEN = 10;
+    private static final String APPLE = "apple";
+
     private StorageService storageService;
     private PurchaseOperation purchaseOperation;
 
@@ -21,16 +25,16 @@ class PurchaseOperationTest {
 
     @Test
     void apply_validTransaction_shouldDecreaseQuantityCorrectly() {
-        storageService.add("apple", 20);
+        storageService.add(APPLE, TWENTY);
         FruitTransaction fruitTransaction = new FruitTransaction(
                 FruitTransaction.Operation.PURCHASE,
-                "apple",
-                10
+                APPLE,
+                TEN
         );
 
         purchaseOperation.apply(fruitTransaction);
 
-        int actualQuantity = storageService.getQuantity("apple");
-        assertEquals(10, actualQuantity);
+        int actualQuantity = storageService.getQuantity(APPLE);
+        assertEquals(TEN, actualQuantity);
     }
 }

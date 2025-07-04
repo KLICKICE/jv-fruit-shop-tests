@@ -1,12 +1,14 @@
 package core.basesyntax.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import core.basesyntax.db.Storage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ReportGeneratorImpTest {
+    private static final int ZERO = 0;
     private ReportGenerator reportGenerator;
     private StorageService storageService;
 
@@ -15,6 +17,11 @@ class ReportGeneratorImpTest {
         storageService = new StorageServiceImp();
         storageService.clear();
         reportGenerator = new ReportGeneratorImp(storageService);
+    }
+
+    @AfterEach
+    void tearDown() {
+        storageService.clear();
     }
 
     @Test
@@ -38,8 +45,10 @@ class ReportGeneratorImpTest {
     }
 
     @Test
-    void generateReport_WithNull() {
-        Storage.fruitMap.put(null, null); // пряме використання для перевірки null
+    void generateReport_ShouldNotAddNullFruit() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            storageService.add(null, ZERO);
+        });
         String expected = "fruit,quantity" + System.lineSeparator();
         String actual = reportGenerator.generateReport();
         assertEquals(expected, actual);
