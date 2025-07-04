@@ -12,6 +12,9 @@ public class StorageServiceImp implements StorageService {
             throw new IllegalArgumentException("Fruit name cannot be null and "
                     + "quantity must be non-negative");
         }
+        if (quantity == 0) {
+            return;
+        }
         fruitMap.put(fruit, fruitMap.getOrDefault(fruit, 0) + quantity);
     }
 
