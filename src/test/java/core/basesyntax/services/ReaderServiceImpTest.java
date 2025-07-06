@@ -9,8 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ReaderServiceImpTest {
-    private static final String VALID_FILE_PATH = "src/test/resourcesTest/test_input.csv";
-    private static final String INVALID_FILE_PATH = "src/test/resourcesTest/missing_input.csv";
+    private static final String VALID_FILE_PATH = "src/test/resources/test_input.csv";
+    private static final String INVALID_FILE_PATH = "src/test/resources/missing_input.csv";
 
     private ReaderService readerService;
 

@@ -7,7 +7,7 @@ import core.basesyntax.exceptions.WriteDataToFileException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -17,10 +17,11 @@ class WriterServiceImpTest {
     private static final String subfolder = "subfolder";
     private static final String test = "test";
     private static final String format = ".txt";
-    private static WriterServiceImp writerServiceImp = null;
 
-    @BeforeAll
-    static void setUp() {
+    private WriterServiceImp writerServiceImp;
+
+    @BeforeEach
+    void setUp() {
         writerServiceImp = new WriterServiceImp();
     }
 

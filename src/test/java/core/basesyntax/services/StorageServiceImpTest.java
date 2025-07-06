@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class StorageServiceImpTest {
@@ -15,7 +16,13 @@ class StorageServiceImpTest {
     private static final int NEGATIVE_TYPICAL_QUANTITY_TEN = -10;
     private static final int TYPICAL_QUANTITY_FIVE = 5;
     private static final int TYPICAL_QUANTITY_ZERO = 0;
-    private StorageServiceImp storageService = new StorageServiceImp();
+
+    private StorageServiceImp storageService;
+
+    @BeforeEach
+    void setUp() {
+        storageService = new StorageServiceImp();
+    }
 
     @AfterEach
     void tearDown() {
